@@ -28,32 +28,25 @@ def checkRepeated(string): ##Funcion que busca caracteres repetidos en un String
 #     return True
 
 def addNumbers(string):
-    usedNumbers = set()
-    for i in range(len(string)):
-        newNumber = str(randint(1,9))
-        if (string[i] == '0' and (newNumber not in usedNumbers)):
-            string2List = list(string)
-            string2List[i] = newNumber
-            replaceRow = "".join(string2List)
-            string = replaceRow
+    numbersPool = {'1', '2', '3', '4', '5', '6', '7', '8', '9'}
+    for i in numbersPool:
+        for j in range(len(string)):
+            if (i not in string and string[j] == '0'):
+                string2List = list(string)
+                string2List[j] = i
+                replaceRow = "".join(string2List)
+                string = replaceRow
     return string
 
 
 def sudoku(numbersMatrix):
-    horizontalSet = set()
-    verticalSet = set()
-    set3x3 = set()
+    print (numbersMatrix)
+
     for i in range(len(numbersMatrix)):
         for j in range(len(numbersMatrix[i])):
-            horizontalSet.add(numbersMatrix[i][j])
-            # print(horizontalSet)
             if (numbersMatrix[i][j] == '0'):
                 numbersMatrix[i] = addNumbers(numbersMatrix[i])
-                            
-
-
-            
-
+                        
     print(numbersMatrix)
 
 
